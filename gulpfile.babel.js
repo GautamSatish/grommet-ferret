@@ -1,7 +1,7 @@
 import { argv }  from 'yargs';
 import gulp from 'gulp';
 import grommetToolbox, { getOptions } from 'grommet-toolbox';
-import git from 'gulp-git';
+//import git from 'gulp-git';
 import del from 'del';
 import mkdirp from 'mkdirp';
 
@@ -24,7 +24,7 @@ gulp.task('release:createTmp', (done) => {
 });
 
 gulp.task('release:heroku', ['dist', 'release:createTmp'], (done) => {
-  if (process.env.CI) {
+  /*if (process.env.CI) {
     git.clone('https://' + process.env.GH_TOKEN + '@github.com/grommet/grommet-ferret.git',
       {
         cwd: './tmp/'
@@ -78,9 +78,9 @@ gulp.task('release:heroku', ['dist', 'release:createTmp'], (done) => {
         });
       }
     );
-  } else {
+  } else {*/
     console.warn('Skipping release. Release:heroku task should be executed by CI only.');
-  }
+  //}
 });
 
 grommetToolbox(gulp);
