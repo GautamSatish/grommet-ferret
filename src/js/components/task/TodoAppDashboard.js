@@ -14,6 +14,7 @@ import Value from 'grommet/components/Value';
 
 import Status from 'grommet/components/icons/Status';
 import CloseIcon from 'grommet/components/icons/base/Close';
+
 import processStatus from 'grommet/utils/Rest';
 import fetch from 'isomorphic-fetch';
 
@@ -63,28 +64,29 @@ export default class TodoAppDashboard extends Component {
 
     this.state = {
       tasks: [],
-      addTask: false,
-      error: undefined,
-      message: undefined
+      addTask: false
     };
   }
 
+/* This function is invoked when the component is mounted.
+     Invoke the get all tasks routine  here. */
   componentDidMount() {
     this._getTasks(this.props.user);
   }
 
+  /* This function is invoked everytime the component receives new props.
+     Invoke the get all tasks routine  to reflect user updates in the textInput. */
   componentWillReceiveProps(nextProps) {
     this._getTasks(nextProps.user);
   }
 
-/* REST API invocations */
+  /* REST API invocations */
   _getTasks(user) {
     const options = { method: 'GET' };
     fetch(`https://todo-list-mit.herokuapp.com/api/tasks?user=${user}`, options)
     .then(processStatus)
     .then(response => response.json())
-    .then(result => this.setState({ tasks: result, error: undefined }))
-    .catch(error => this.setState({ error }));
+    .then(result => this.setState({ tasks: result }));
   }
 
   _addTask(task) {
@@ -97,21 +99,14 @@ export default class TodoAppDashboard extends Component {
       },
       body: JSON.stringify(task)
     };
-    fetch('https://todo-list-mit.herokuapp.com/api/tasks', options)
-    .then(processStatus)
-    .then(response => response.json())
-    .then(result => this.setState({ message: result, error: undefined }))
-    .catch(error => this.setState({ error }));
+    fetch('https://todo-list-mit.herokuapp.com/api/tasks', options);
   }
 
   _delTask(index) {
     const options = { method: 'DELETE' };
-    fetch(`https://todo-list-mit.herokuapp.com/api/tasks/${index}`, options)
-    .then(processStatus)
-    .then(response => response.json())
-    .then(result => this.setState({ message: result, error: undefined }))
-    .catch(error => this.setState({ error }));
+    fetch(`https://todo-list-mit.herokuapp.com/api/tasks/${index}`, options);
   }
+
   _onRequestForAdd() {
     this.setState({ addTask: true });
   }
