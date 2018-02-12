@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Box from 'grommet/components/Box';
 import Button from 'grommet/components/Button';
@@ -51,7 +52,7 @@ DeleteTaskButton.propTypes = {
   onDelete: PropTypes.func.isRequired
 };
 
-export default class TodoAppDashboard extends Component {
+class TodoAppDashboard extends Component {
 
   constructor() {
     super();
@@ -217,3 +218,9 @@ export default class TodoAppDashboard extends Component {
 TodoAppDashboard.propTypes = {
   user: PropTypes.string.isRequired
 };
+
+let select = (state) => ({
+  user: state.session.userName
+});
+
+export default connect(select)(TodoAppDashboard);
