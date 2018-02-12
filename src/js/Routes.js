@@ -13,6 +13,7 @@ import VirtualMachineAdd from './components/virtualMachine/VirtualMachineAdd';
 import VirtualMachineEdit from './components/virtualMachine/VirtualMachineEdit';
 import VirtualMachineShow from './components/virtualMachine/VirtualMachineShow';
 import ActivityIndex from './components/activity/ActivityIndex';
+import TodoAppDashboard from './components/task/TodoAppDashboard';
 import SizeIndex from './components/size/SizeIndex';
 import SizeAdd from './components/size/SizeAdd';
 import SizeEdit from './components/size/SizeEdit';
@@ -41,6 +42,7 @@ export let routes = [
       { path: 'virtual-machine-sizes/edit/*', component: SizeEdit },
       { path: 'virtual-machine-sizes', component: SizeIndex },
       { path: 'activity', component: ActivityIndex },
+      { path: 'todo', component: TodoAppDashboard },
       { path: 'settings/edit', component: SettingsEdit },
       { path: 'settings/software', component: Software },
       { path: 'settings/update', component: Software }

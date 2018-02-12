@@ -18,6 +18,7 @@ const initialState = {
     { path: '/images', label: 'Images', excludeRole: 'virtualization user' },
     { path: '/virtual-machine-sizes', label: 'Sizes',
       excludeRole: 'virtualization user' },
+    { path: '/todo', label: 'Admin Tasks'},
     { path: '/settings/edit', label: 'Settings',
       excludeRole: 'virtualization user' }
   ]
